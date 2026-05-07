@@ -1,6 +1,6 @@
 # Windows Password Recovery Provider
 
-A custom Windows Credential Provider that enables secure password recovery directly from the Windows logon screen.
+A custom Windows Credential Provider that enables password recovery directly from the Windows logon screen.
 
 The provider supports:
 - BitLocker Recovery Key–based password reset
@@ -36,7 +36,7 @@ Both flows enforce password change at next login for improved security.
 1. Run:
 
    ```bash
-   install-credential-provider.exe
+   windows-password-recovery.exe
    ```
 
 2. Restart the machine after installation.
@@ -61,12 +61,16 @@ Both flows enforce password change at next login for improved security.
 3. User logs in using Windows Hello PIN
 4. Windows prompts for a new password
 
+> **Note:**  
+> The BitLocker recovery flow performs a password reset and may invalidate existing app sessions or credentials tied to the previous password.  
+> The PIN recovery flow is less disruptive and preserves the existing password until changed by the user.
+
 ---
 
 ## Security Notes
 
 - No plaintext password storage
-- Password reset requires authentication
+- Password reset requires recovery key validation or Windows Hello PIN access
 - Temporary passwords are expired immediately
 - Logging avoids storing sensitive information
 
@@ -75,7 +79,6 @@ Both flows enforce password change at next login for improved security.
 ## Limitations
 
 - Supports local accounts only
-- Designed as a proof-of-concept (PoC)
 - Domain and Azure AD accounts are not currently supported
 
 ---
