@@ -28,10 +28,10 @@ typedef int (WINAPI* MessageBoxTimeoutW_t) (HWND, LPCWSTR, LPCWSTR, UINT, WORD, 
 // Logger function
 void LogToFile(const std::wstring& message)
 {
-    const wchar_t* logPath = L"C:\\ProgramData\\CredentialProvider\\credprov.log";
+    const wchar_t* logPath = L"C:\\ProgramData\\PasswordRecovery\\passreccp.log";
 
     // Create directory if needed
-    CreateDirectoryW(L"C:\\ProgramData\\CredentialProvider", nullptr);
+    CreateDirectoryW(L"C:\\ProgramData\\PasswordRecovery", nullptr);
 
     // Get current local timestamp
     SYSTEMTIME st;
@@ -1035,7 +1035,7 @@ HRESULT PassRecCredential::CommandLinkClicked(DWORD dwFieldID)
                 {
                     pMessageBoxTimeoutW(
                         hwndOwner,
-                        L"To find your BitLocker Key:\n Go to aka.ms/myrecoverykey for a personal account or aka.ms/aadrecoverykey for a work or school account on a secondary device.\n Navigate to your device and view Recovery Key \n Type in the BitLocker Recovery Key.\n",
+                        L"To find your BitLocker recovery key:\n - Personal account: aka.ms/myrecoverykey\n - Work or school account: aka.ms/aadrecoverykey\n - Saved or printed recovery key file\n\n Use another device if needed, then enter the key here.",
                         L"Where to Find BitLocker Recovery Key",
                         0,
                         0,
@@ -1045,7 +1045,7 @@ HRESULT PassRecCredential::CommandLinkClicked(DWORD dwFieldID)
                 else
                 {
                     // fallback to older method
-                    ::MessageBox(hwndOwner, L"To find your BitLocker Key:\n Go to aka.ms/myrecoverykey for a personal account or aka.ms/aadrecoverykey for a work or school account on a secondary device.\n Navigate to your device and view Recovery Key \n Type in the BitLocker Recovery Key.\n", L"Where to Find BitLocker Recovery Key", 0);
+                    ::MessageBox(hwndOwner, L"To find your BitLocker recovery key:\n - Personal account: aka.ms/myrecoverykey\n - Work or school account: aka.ms/aadrecoverykey\n - Saved or printed recovery key file\n\n Use another device if needed, then enter the key here.", L"Where to Find BitLocker Recovery Key", 0);
                 }
             }
 
@@ -1332,7 +1332,7 @@ HRESULT PassRecCredential::GetSerialization(
                             }
 
                             //UpdatePasswordInfo();
-                            SHStrDupW(L"Password reset to TempP@ss123 Please change it at next logon.", ppwszOptionalStatusText);
+                            SHStrDupW(L"Password reset to 'TempP@ss123'. Please change it at next logon.", ppwszOptionalStatusText);
                             *pcpsiOptionalStatusIcon = CPSI_SUCCESS;
                             *pcpgsr = CPGSR_NO_CREDENTIAL_FINISHED;
                             return S_OK;
