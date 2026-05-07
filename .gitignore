@@ -30,6 +30,8 @@ mono_crash.*
 bin/x64/
 obj/x64/
 cpp/x64/
+cpp/PassRecCredProv
+!releases/
 
 [Dd]ebug/x86/
 [Dd]ebugPublic/x86/
