@@ -1,8 +1,7 @@
 $ProviderName = "PasswordRecovery"
 $ProviderGuid = "{749b22cd-f9fb-49bc-b5ad-cebcb4800a0d}"
 
-$InstallDir = "$env:ProgramFiles\WindowsPasswordRecoveryProvider"
-$DllPath = Join-Path $InstallDir "$ProviderName.dll"
+$DllPath = J"$env:WINDIR\System32\$ProviderName.dll"
 
 Write-Host "Registering Credential Provider..."
 
@@ -15,22 +14,22 @@ Set-ItemProperty `
     -Value $ProviderName
 
 # CLSID registration
-New-Item -Path "HKCR:\CLSID\$ProviderGuid" -Force | Out-Null
+New-Item -Path "Registry::HKEY_CLASSES_ROOT\CLSID\$ProviderGuid" -Force | Out-Null
 
 Set-ItemProperty `
-    -Path "HKCR:\CLSID\$ProviderGuid" `
+    -Path "Registry::HKEY_CLASSES_ROOT\CLSID\$ProviderGuid" `
     -Name "(Default)" `
     -Value $ProviderName
 
-New-Item -Path "HKCR:\CLSID\$ProviderGuid\InprocServer32" -Force | Out-Null
+New-Item -Path "Registry::HKEY_CLASSES_ROOT\CLSID\$ProviderGuid\InprocServer32" -Force | Out-Null
 
 Set-ItemProperty `
-    -Path "HKCR:\CLSID\$ProviderGuid\InprocServer32" `
+    -Path "Registry::HKEY_CLASSES_ROOT\CLSID\$ProviderGuid\InprocServer32" `
     -Name "(Default)" `
-    -Value $DllPath
+    -Value "$ProviderName.dll"
 
 Set-ItemProperty `
-    -Path "HKCR:\CLSID\$ProviderGuid\InprocServer32" `
+    -Path "Registry::HKEY_CLASSES_ROOT\CLSID\$ProviderGuid\InprocServer32" `
     -Name "ThreadingModel" `
     -Value "Apartment"
 

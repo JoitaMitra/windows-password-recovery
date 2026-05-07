@@ -9,7 +9,7 @@ Remove-Item `
     -ErrorAction SilentlyContinue
 
 Remove-Item `
-    -Path "HKCR:\CLSID\$ProviderGuid" `
+    -Path "Registry::HKEY_CLASSES_ROOT\CLSID\$ProviderGuid" `
     -Recurse `
     -Force `
     -ErrorAction SilentlyContinue

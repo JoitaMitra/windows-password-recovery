@@ -1,6 +1,6 @@
 [Setup]
-AppName=Windows Password Recovery Provider
-AppVersion=1.0.0
+AppName=Password Recovery Provider
+AppVersion=1.0.0.0
 VersionInfoDescription=Windows Password Recovery Setup
 VersionInfoVersion=1.0.0.0
 VersionInfoCopyright=Copyright (C) 2026 Joita Mitra
@@ -8,8 +8,8 @@ VersionInfoProductName=
 VersionInfoProductVersion=
 VersionInfoProductTextVersion=
 VersionInfoCompany=
-DefaultDirName={autopf}\WindowsPasswordRecoveryProvider
-DefaultGroupName=Windows Password Recovery Provider
+DefaultDirName={autopf}\PasswordRecoveryProvider
+DefaultGroupName=PasswordRecoveryProvider
 OutputDir=output
 OutputBaseFilename=windows-password-recovery
 Compression=lzma
@@ -17,7 +17,7 @@ SolidCompression=yes
 PrivilegesRequired=admin
 WizardStyle=modern
 ArchitecturesInstallIn64BitMode=x64compatible
-RestartIfNeededByRun=yes
+AlwaysRestart=yes
 
 SetupIconFile=assets\icon.ico
 
@@ -48,14 +48,14 @@ end;
 [Files]
 ; Normal DLL
 Source: "payload\PasswordRecovery.dll"; \
-DestDir: "{app}"; \
+DestDir: "{sys}"; \
 DestName: "PasswordRecovery.dll"; \
 Flags: ignoreversion; \
 Check: not EnableDebugLogging
 
 ; Logging DLL
 Source: "payload\PasswordRecovery_Debug.dll"; \
-DestDir: "{app}"; \
+DestDir: "{sys}"; \
 DestName: "PasswordRecovery.dll"; \
 Flags: ignoreversion; \
 Check: EnableDebugLogging
