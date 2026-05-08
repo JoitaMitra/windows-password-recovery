@@ -1,5 +1,4 @@
 
-https://github.com/user-attachments/assets/4ecde98e-01db-44fe-8875-1f5a90d4ad7b
 # Windows Password Recovery Provider
 
 A custom Windows Credential Provider that enables password recovery directly from the Windows logon screen.
