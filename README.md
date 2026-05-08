@@ -15,20 +15,11 @@ Both flows enforce password change at next login for improved security.
 
 ### BitLocker Recovery Flow
 
-
-
 https://github.com/user-attachments/assets/f9a26386-5b87-497b-8d60-165b2ce719d2
-
-
 
 ### PIN Recovery Flow
 
-
-
 https://github.com/user-attachments/assets/3e938f3b-6cd5-478d-a437-077c5b0157c3
-
-
-
 
 ---
 
@@ -50,6 +41,12 @@ https://github.com/user-attachments/assets/3e938f3b-6cd5-478d-a437-077c5b0157c3
 - Local administrator privileges
 - BitLocker enabled (for BitLocker recovery flow)
 - Local user account support only
+
+---
+
+## Download
+
+Download the latest installer from the [Releases](../../releases) page.
 
 ---
 
