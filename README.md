@@ -1,3 +1,5 @@
+
+https://github.com/user-attachments/assets/4ecde98e-01db-44fe-8875-1f5a90d4ad7b
 # Windows Password Recovery Provider
 
 A custom Windows Credential Provider that enables password recovery directly from the Windows logon screen.
@@ -7,6 +9,18 @@ The provider supports:
 - Windows Hello PIN–based password expiration
 
 Both flows enforce password change at next login for improved security.
+
+---
+
+## Demo
+
+### BitLocker Recovery Flow
+
+![Bitlocker Flow](demo/bitlocker-flow.gif)
+
+### PIN Recovery Flow
+
+![PIN Recovery](demo/pin-flow.gif)
 
 ---
 
@@ -80,9 +94,3 @@ Both flows enforce password change at next login for improved security.
 
 - Supports local accounts only
 - Domain and Azure AD accounts are not currently supported
-
----
-
-## Screenshots
-
-
