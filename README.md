@@ -15,11 +15,20 @@ Both flows enforce password change at next login for improved security.
 
 ### BitLocker Recovery Flow
 
-![Bitlocker Flow](demo/bitlocker-flow.gif)
+
+
+https://github.com/user-attachments/assets/f9a26386-5b87-497b-8d60-165b2ce719d2
+
+
 
 ### PIN Recovery Flow
 
-![PIN Recovery](demo/pin-flow.gif)
+
+
+https://github.com/user-attachments/assets/3e938f3b-6cd5-478d-a437-077c5b0157c3
+
+
+
 
 ---
 
