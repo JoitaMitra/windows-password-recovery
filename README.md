@@ -73,12 +73,16 @@ Download the latest installer from the [Releases](../../releases) page.
 3. Password is reset to a temporary value
 4. User is forced to change password at next login
 
+This flow validates the BitLocker recovery key and then uses standard Win32 APIs to reset and expire the password. The final password change is handled through the built-in Windows password change process.
+
 ### 🔹 PIN Recovery Flow
 
 1. Select the PIN recovery option
 2. Password expiration flag is set
 3. User logs in using Windows Hello PIN
 4. Windows prompts for a new password
+
+This flow does not directly reset the password. It expires the existing password and relies on the standard Windows password change process after successful Windows Hello authentication.
 
 > **Note:**  
 > The BitLocker recovery flow performs a password reset and may invalidate existing app sessions or credentials tied to the previous password.  
@@ -89,9 +93,11 @@ Download the latest installer from the [Releases](../../releases) page.
 ## Security Notes
 
 - No plaintext password storage
-- Password reset requires recovery key validation or Windows Hello PIN access
+- Password reset requires BitLocker recovery key validation or existing Windows Hello PIN access
+- Recovery flows rely on existing Windows authentication and recovery mechanisms
+- Password reset and expiration operations use standard Win32 APIs (`NetUserSetInfo`)
 - Temporary passwords are expired immediately
-- Logging avoids storing sensitive information
+-  Optional logging support avoids storing sensitive information
 
 ---
 
@@ -99,3 +105,13 @@ Download the latest installer from the [Releases](../../releases) page.
 
 - Supports local accounts only
 - Domain and Azure AD accounts are not currently supported
+
+---
+
+## References
+
+This project is based on Microsoft's Credential Provider sample framework:
+
+- [https://github.com/microsoft/windows-classic-samples/tree/main/Samples/CredentialProvider](https://github.com/Microsoft/Windows-classic-samples/tree/main/Samples/CredentialProvider)
+
+The implementation extends the sample architecture with custom recovery workflows and UI behavior.
